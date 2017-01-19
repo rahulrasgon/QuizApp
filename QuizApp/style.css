@@ -1,0 +1,171 @@
+html, body {
+  margin:0px;
+  padding: 0px;
+}
+
+body {
+  background-image:  url('http://1.bp.blogspot.com/-Z1Ec0x2viiU/UTetZyq2Q9I/AAAAAAAAJUQ/w9cTXoBzRqI/s320/lower22.jpg');
+  position: relative;
+}
+header {
+  width: 100%;
+
+  font-size: 36px;
+  height: 150px;
+  text-align: center;
+  margin-top: 5%;
+
+}
+
+header h1 {
+  margin-top: 0px;
+    color: #aec6d6;
+  text-shadow:   6px 5px 5px #0000FF;
+}
+#startquiz1 {
+position: absolute;
+left: 40%;
+top:50%;
+}
+
+#resetquiz {
+position: absolute;
+left: 43%;
+top:110%;
+visibility: hidden;
+}
+
+#quizcontainer {
+  width: 80%;
+  margin:0px auto;
+  border:1px solid #0000FF;
+  padding: 15px;
+  margin-top: 20px;
+  box-shadow: -20px 20px  90px #0000FF, 20px -20px  90px #0000FF;
+  border-radius: 20px;
+ color:  #aec6d6;
+ visibility: hidden;
+}
+
+#question {
+  font-size: 48px;
+}
+
+.optioncontainer {
+  margin-top:20px;
+  font-size: 24px;
+}
+
+span {
+  margin-left: 10px;
+}
+
+#notification {
+width: 80%;
+background:rgba(216, 7, 7, 0.82);
+margin:0 auto;
+margin-top: 30px;
+border-radius: 50px;
+text-align: center;
+font-size: 24px;
+color: #aec6d6;
+line-height: 50px;
+
+}
+
+#nextbutton {
+  visibility: hidden;
+  width: 80%;
+  margin:0px auto;
+  border:1px solid #0000FF;
+  padding: 20px;
+  margin-top: 3%;
+  box-shadow: -10px 10px  50px #0000FF, 10px -10px  50px #0000FF;
+ color:  #aec6d6;
+ position: relative;
+ text-align: center;
+ height: 40px;
+ font-size: 24px;
+}
+
+button {
+border-radius: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: #aec6d6;
+  background: #005f96;
+  font-size: 24px;
+  float: left;
+
+}
+
+button:focus {
+  outline: none;
+}
+
+#outofquestion {
+  display: inline;
+  float: right;
+  margin-right: 100px;
+  color: #aec6d6;
+  font-size: 24px;
+  margin-top: 0px;
+}
+
+@media screen and (max-width: 320px) {
+
+header {
+  font-size: 26px;
+}
+
+button {
+  float: none;
+}
+
+#nextbutton {
+  height: auto;
+}
+#outofquestion {
+  margin-top:20px;
+margin-right:0px;
+float: none;
+display: inline-block;
+}
+
+#resetquiz {
+  position: absolute;
+  left:25%;
+}
+
+#startquiz1 {
+  position: absolute;
+  left:25%;
+}
+}
+
+@media screen and (min-width: 321px) and (max-width: 639px){
+  #quizcontainer {
+    margin-top: 40px;
+  }
+  #resetquiz {
+  position: absolute;
+  left:27%;
+}
+
+#startquiz1 {
+  position: absolute;
+  left:27%;
+}
+#nextbutton {
+  margin-top:3%;
+  height: auto;
+}
+
+#outofquestion {
+margin-top:0px;
+margin-right:0px;
+float: none;
+display: inline-block;
+}
+}
+

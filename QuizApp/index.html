@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz Application</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+<header>
+  <h1>Quiz Application</h1>
+</header>
+<button onclick="startquiz();" id="startquiz1">Start Quiz</button>
+<div id="quizcontainer">
+<h1 id="questions">questions here</h1>
+<div class="optioncontainer"><input type="radio" name="option"  value="1"><span id="option1">option1</span></div>
+<div class="optioncontainer"><input type="radio" name="option"  value="2"><span id="option2">option2</span></div>
+<div class="optioncontainer"><input type="radio" name="option"  value="3"><span id="option3">option3</span></div>
+<div class="optioncontainer"><input type="radio" name="option"  value="4"><span id="option4">option4</span></div>
+</div>
+<div id="notification" style="visibility: hidden;"></div>
+<div id="nextbutton">
+  <button id="nextquestion" onclick="nextquestion1()">Next</button>
+  <p id="outofquestion">Question x of y</p>
+
+</div>
+
+<button id="resetquiz" onclick="location.reload()">Reset Quiz</button>
+<script type="text/javascript" src="control.js"></script>
+</body>
+</html>
