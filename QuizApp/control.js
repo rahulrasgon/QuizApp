@@ -1,4 +1,6 @@
-var array = [{
+//Array Of Questions
+var array = [
+  {
     "question":"What does HTML stand for?",
     "option1":"Hyper Text Markup Language",
     "option2":"Hyperlinks and Text Markup Language",
@@ -15,18 +17,19 @@ var array = [{
     "answer":"2"
   },
   {
-  "question":"What does CSS stand for ?",
-  "option1":"Clear Style Sheet",
-  "option2":"Cascading Style Sheet",
-  "option3":"Clever Style Sheet",
-  "option4":"Cascading stand Sheet",
-  "answer":"2"
-  }];
+    "question":"What does CSS stand for ?",
+    "option1":"Clear Style Sheet",
+    "option2":"Cascading Style Sheet",
+    "option3":"Clever Style Sheet",
+    "option4":"Cascading stand Sheet",
+    "answer":"2"
+  }
+];
 
+//Global Variables
 var index=0;
 score=0;
 var totalquestion=array.length;
-
 var quizcontainer = document.getElementById('quizcontainer');
 var questions = document.getElementById('questions');
 var opt1 = document.getElementById('option1');
@@ -39,9 +42,11 @@ var outofquestion=document.getElementById('outofquestion');
 var notification1=document.getElementById('notification');
 var startquiz1=document.getElementById('startquiz1');
 var resetquiz=document.getElementById('resetquiz');
-function showquestions(index)  {
+
+//Show Question Function
+function showquestions(index) {
   var ques=array[index];
-  questions.innerHTML = ques.question;
+  questions.innerHTML ="Question "+(index+1)+":-    "+ques.question;
   opt1.innerHTML = ques.option1;
   opt2.innerHTML = ques.option2;
   opt3.innerHTML = ques.option3;
@@ -49,41 +54,39 @@ function showquestions(index)  {
   outofquestion.innerHTML="question "+(index+1)+" of "+totalquestion;
 }
 
+//Load Next Question Function
 function nextquestion1 () {
-var tickans=document.querySelector('input[type=radio]:checked');
-
-if(!tickans)
-{
-  notification1.style.visibility = 'visible';
-  notification1.innerHTML = "Please Select Your Answer";
-  return;
+  var tickans=document.querySelector('input[type=radio]:checked');
+  if(!tickans)
+  {
+    notification1.style.visibility = 'visible';
+    notification1.innerHTML = "Please Select Your Answer";
+    return;
+  }
+  tickans.checked=false;
+  if(tickans.value==array[index].answer)
+  {
+    score++;
+  }
+  index=index+1;
+  notification1.style.visibility = 'hidden';
+  if(index==totalquestion-1)
+  {
+    nextquestion.innerHTML="Finish";
+  }
+  if(index==totalquestion)
+  {
+    quizcontainer.style.display='none';
+    nextbutton.innerHTML="Score is "+score+" Out of "+totalquestion;
+    resetquiz.style.visibility='visible';
+  }
+  showquestions(index);
 }
-tickans.checked=false;
 
-if(tickans.value==array[index].answer)
-{
-score++;
-}
- index=index+1;
- notification1.style.visibility = 'hidden';
- if(index==totalquestion-1)
-{
-nextquestion.innerHTML="Finish";
-}
-
-
- if(index==totalquestion)
- {
-  quizcontainer.style.display='none';
-  nextbutton.innerHTML="Score is "+score+" Out of "+totalquestion;
-  resetquiz.style.visibility='visible';
-
- }
-showquestions(index);
-}
+//Start Question Function
 function startquiz() {
-startquiz1.style.display='none';
-nextbutton.style.visibility='visible'
-quizcontainer.style.visibility='visible';
-showquestions(index);
+  startquiz1.style.display='none';
+  nextbutton.style.visibility='visible'
+  quizcontainer.style.visibility='visible';
+  showquestions(index);
 }
