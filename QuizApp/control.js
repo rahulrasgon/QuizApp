@@ -28,7 +28,7 @@ var array = [
 
 //Global Variables
 var index=0;
-score=0;
+var score=0;
 var totalquestion=array.length;
 var quizcontainer = document.getElementById('quizcontainer');
 var questions = document.getElementById('questions');
@@ -55,27 +55,23 @@ function showquestions(index) {
 }
 
 //Load Next Question Function
-function nextquestion1 () {
+function nextquestion1() {
   var tickans=document.querySelector('input[type=radio]:checked');
-  if(!tickans)
-  {
+  if(!tickans){
     notification1.style.visibility = 'visible';
     notification1.innerHTML = "Please Select Your Answer";
     return;
   }
   tickans.checked=false;
-  if(tickans.value==array[index].answer)
-  {
+  if(tickans.value==array[index].answer){
     score++;
   }
   index=index+1;
   notification1.style.visibility = 'hidden';
-  if(index==totalquestion-1)
-  {
+  if(index==totalquestion-1) {
     nextquestion.innerHTML="Finish";
   }
-  if(index==totalquestion)
-  {
+  if(index==totalquestion) {
     quizcontainer.style.display='none';
     nextbutton.innerHTML="Score is "+score+" Out of "+totalquestion;
     resetquiz.style.visibility='visible';
