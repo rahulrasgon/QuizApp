@@ -1,35 +1,22 @@
-//Array Of Questions
-var questionArray = [
-  {
-    "question":"What does HTML stand for?",
-    "option1":"Hyper Text Markup Language",
-    "option2":"Hyperlinks and Text Markup Language",
-    "option3":"Home Tool Markup Language",
-    "option4":"Home Trade Making Language",
-    "answer":"1"
-  },
-  {
-    "question":"What Does PHP stand for ?",
-    "option1":"Pre High Processor",
-    "option2":"Hypertext Pre Processor",
-    "option3":"Pre hyperlink Processor",
-    "option4":"Post Hypertext Process",
-    "answer":"2"
-  },
-  {
-    "question":"What does CSS stand for ?",
-    "option1":"Clear Style Sheet",
-    "option2":"Cascading Style Sheet",
-    "option3":"Clever Style Sheet",
-    "option4":"Cascading stand Sheet",
-    "answer":"2"
+"use strict";
+var questionArray=new Array();
+var totalQuestion;
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    questionArray = JSON.parse(this.responseText);
+    totalQuestion=questionArray.length;
+    showQuestions(index);
+    startQuiz1.style.display='none';
+    quiztype.style.display='none';
+    nextButton.style.visibility='visible';
+    quizContainer.style.visibility='visible';
   }
-];
+};
 
 //Global Variables
 var index=0;
 var score=0;
-var totalQuestion=questionArray.length;
 var quizContainer = document.getElementById('quiz-container');
 var questions = document.getElementById('questions');
 var opt1 = document.getElementById('option1');
@@ -46,12 +33,12 @@ var resetQuiz=document.getElementById('reset-quiz');
 //Show Question Function
 function showQuestions(index) {
   var ques=questionArray[index];
-  questions.innerHTML ="Question "+(index+1)+":-    "+ques.question;
-  opt1.innerHTML = ques.option1;
-  opt2.innerHTML = ques.option2;
-  opt3.innerHTML = ques.option3;
-  opt4.innerHTML = ques.option4;
-  outOfQuestion.innerHTML="question "+(index+1)+" of "+totalquestion;
+  questions.innerHTML ="Question "+(index+1)+":-    "+ques.title;
+  opt1.innerHTML = ques.field_option_1;
+  opt2.innerHTML = ques.field_option_2;
+  opt3.innerHTML = ques.field_option_3;
+  opt4.innerHTML = ques.field_option_4;
+  outOfQuestion.innerHTML="question "+(index+1)+" of "+totalQuestion;
 }
 
 //Load Next Question Function
@@ -63,7 +50,7 @@ function nextQuestion1() {
     return;
   }
   tickans.checked=false;
-  if(tickans.value==questionArray[index].answer){
+  if(tickans.value==questionArray[index].field_correct_answ){
     score++;
   }
   index=index+1;
@@ -81,8 +68,9 @@ function nextQuestion1() {
 
 //Start Question Function
 function startQuiz() {
-  startQuiz1.style.display='none';
-  nextButton.style.visibility='visible'
-  quizContainer.style.visibility='visible';
-  showQuestions(index);
+  var quiztype=document.getElementById('quiztype').value;
+  xmlhttp.open("GET", "http://drupal.intern/question/json?question_type=" + quiztype, true);
+  xmlhttp.send();
+
 }
+
